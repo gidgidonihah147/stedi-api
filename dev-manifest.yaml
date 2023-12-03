@@ -80,10 +80,6 @@ spec:
             failureThrehold: 1
             periodSeconds: 10
             timeoutSeconds: 10
-# initialDelaySeconds tells Kubernetes to wait before doing a request              
-            initialDelaySeconds: 3
-# periodSeconds tells Kubernetes how often to check health            
-            periodSeconds: 3
 ---
 apiVersion: v1
 kind: Service
