@@ -77,6 +77,9 @@ spec:
               path: /
 # Port defines the port to use when doing the HTTP request              
               port: 4567
+            failureThrehold: 1
+            periodSeconds: 10
+            timeoutSeconds: 10
 # initialDelaySeconds tells Kubernetes to wait before doing a request              
             initialDelaySeconds: 3
 # periodSeconds tells Kubernetes how often to check health            
