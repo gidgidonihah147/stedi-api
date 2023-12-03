@@ -68,7 +68,7 @@ spec:
 # CPU is the minimum amount of CPU the pod needs to run
               cpu: ".25"
 # Memory is the minimum amount of memory the pod needs to run              
-              memory: "50Mi"
+              memory: "520Mi"
 # LivenessProbe is a configuration that checks the pod for health
           livenessProbe:
 # HttpGet instructs kubernetes to do an HTTP request to check health
@@ -77,9 +77,11 @@ spec:
               path: /
 # Port defines the port to use when doing the HTTP request              
               port: 4567
-            failureThrehold: 1
+# initialDelaySeconds tells Kubernetes to wait before doing a request              
+            initialDelaySeconds: 10
+# periodSeconds tells Kubernetes how often to check health            
             periodSeconds: 10
-            timeoutSeconds: 10
+---
 apiVersion: v1
 kind: Service
 metadata:
