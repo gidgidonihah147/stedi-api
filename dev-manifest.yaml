@@ -1,4 +1,4 @@
-#© 2021 tristin Murdock
+#© 2021 tristin Parker
 # this is a comment
 # this is the version of YAML we are using with the Kubernetes API
 apiVersion: apps/v1 
@@ -60,7 +60,7 @@ spec:
 # Limits represent the max amount of cpu and memory allowed for the pod           
             limits:
 # CPU is the max amount of CPU that can be used by the pod
-              cpu: ".5"
+              cpu: "1"
 # Memory is the max amount of memory that can be used by the pod              
               memory: "500Mi"
 # Requests is the minimum amount of compute resources used by the pod
