@@ -69,7 +69,7 @@ kind: Ingress
 metadata:
   name: prod-stedi-tristin-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: prod-stedi-tristin-public # This IP has not been created yet - need to create first
+    kubernetes.io/ingress.regional-static-ip-name: prod-stedi-tristin-public # This IP has not been created yet - need to create first
     networking.gke.io/managed-certificates: prod-stedi-tristin-certificate
     kubernetes.io/ingress.allow-http: "false"
 spec:
