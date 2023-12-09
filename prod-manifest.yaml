@@ -1,4 +1,4 @@
-#© 2023 tristin Parker
+#© 2023 tristin parker
 
 apiVersion: apps/v1
 kind: Deployment
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: prod-stedi-tristin
-          image: us-docker.pkg.dev/my-devops-team-404512/tristin-api/stedi-api:latest # This image needs to refer to the NEW Artifact registry repositorry
+          image: gcr.io/cubs-consulting/stedi # This image needs to refer to the NEW Artifact registry repositorry
           env:
             - name: REDIS_PASSWORD
               valueFrom:
@@ -91,4 +91,3 @@ metadata:
 spec:
   domains:
     - tristin.cit262.com # This is a DNS record that has not been created yet - we need to create that first
-    
