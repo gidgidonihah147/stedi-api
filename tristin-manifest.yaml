@@ -25,8 +25,8 @@ spec:
           - name: REDIS_PASS
             valueFrom:
               secretKeyRef:
-                name: tristin-twilio-dev
-                key: twilio_token
+                name: redis-secrets-tristin
+                key: REDIS_PASS
           volumeMounts:
             - name: redis-tristin-volume
               mountPath: /data

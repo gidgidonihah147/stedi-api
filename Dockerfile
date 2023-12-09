@@ -13,4 +13,3 @@ COPY --from=MAVEN_BUILD /opt/stedi/target/StepTimerWebsocket-1.0-SNAPSHOT.jar /s
 ENTRYPOINT ["java", "-jar", "/stedi.jar"]
 
 EXPOSE 4567
-
