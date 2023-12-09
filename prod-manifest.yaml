@@ -1,4 +1,4 @@
-#© 2023 tristin  Parker
+#© 2023 tristin Parker
 
 apiVersion: apps/v1
 kind: Deployment
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: prod-stedi-tristin
-          image: us-docker.pkg.dev/my-devops-team-404512/tristin-api/stedi-api # This image needs to refer to the NEW Artifact registry repositorry
+          image: us-docker.pkg.dev/my-devops-team-404512/tristin-api/stedi-api:latest # This image needs to refer to the NEW Artifact registry repositorry
           env:
             - name: REDIS_PASSWORD
               valueFrom:
