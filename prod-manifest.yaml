@@ -87,7 +87,7 @@ spec:
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-  name: prod-stedi-tristin-ingress-certificate # This needs to match line 68
+  name: prod-stedi-tristin-certificate # This needs to match line 68
 spec:
   domains:
     - tristin.cit262.com # This is a DNS record that has not been created yet - we need to create that first
