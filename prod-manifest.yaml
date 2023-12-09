@@ -67,23 +67,75 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: prod-stedi-tristin-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: prod-stedi-tristin-public # This IP has not been created yet - need to create first
+    ingress.gcp.kubernetes.io/pre-shared-cert: mcrt-a4fda889-ae0e-4f14-95bf-81b177c8aff5
+    ingress.kubernetes.io/backends: '{"k8s-be-30729--912b15655948e794":"HEALTHY","k8s1-912b1565-default-prod-stedi-tristin-nodeport-80-2ac5d57e":"HEALTHY"}'
+    ingress.kubernetes.io/forwarding-rule: k8s2-fr-bv8h07hk-default-prod-stedi-tristin-ingress-dyy35u1m
+    ingress.kubernetes.io/https-forwarding-rule: k8s2-fs-bv8h07hk-default-prod-stedi-tristin-ingress-dyy35u1m
+    ingress.kubernetes.io/https-target-proxy: k8s2-ts-bv8h07hk-default-prod-stedi-tristin-ingress-dyy35u1m
+    ingress.kubernetes.io/ssl-cert: mcrt-a4fda889-ae0e-4f14-95bf-81b177c8aff5
+    ingress.kubernetes.io/target-proxy: k8s2-tp-bv8h07hk-default-prod-stedi-tristin-ingress-dyy35u1m
+    ingress.kubernetes.io/url-map: k8s2-um-bv8h07hk-default-prod-stedi-tristin-ingress-dyy35u1m
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"kubernetes.io/ingress.global-static-ip-name":"prod-stedi-tristin-public","networking.gke.io/managed-certificates":"prod-stedi-tristin-certificate"},"name":"prod-stedi-tristin-ingress","namespace":"default"},"spec":{"rules":[{"http":{"paths":[{"backend":{"service":{"name":"prod-stedi-tristin-nodeport","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}]}}
+    kubernetes.io/ingress.global-static-ip-name: prod-stedi-tristin-public
     networking.gke.io/managed-certificates: prod-stedi-tristin-certificate
-    # kubernetes.io/ingress.allow-http: "false"
+  creationTimestamp: "2023-12-06T13:08:56Z"
+  finalizers:
+  - networking.gke.io/ingress-finalizer-V2
+  generation: 1
+  managedFields:
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:kubernetes.io/ingress.global-static-ip-name: {}
+          f:networking.gke.io/managed-certificates: {}
+      f:spec:
+        f:rules: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2023-12-06T13:08:56Z"
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:ingress.gcp.kubernetes.io/pre-shared-cert: {}
+    manager: managed-certificate-controller
+    operation: Update
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:ingress.kubernetes.io/backends: {}
+          f:ingress.kubernetes.io/forwarding-rule: {}
+          f:ingress.kubernetes.io/https-forwarding-rule: {}
+          f:ingress.kubernetes.io/https-target-proxy: {}
+          f:ingress.kubernetes.io/ssl-cert: {}
+          f:ingress.kubernetes.io/target-proxy: {}
+          f:ingress.kubernetes.io/url-map: {}
+        f:finalizers:
+          .: {}
+          v:"networking.gke.io/ingress-finalizer-V2": {}
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: glbc
+    operation: Update
+    subresource: status
+    time: "2023-12-09T08:10:36Z"
+  name: prod-stedi-tristin-ingress
+  namespace: default
+  resourceVersion: "30717060"
+  uid: 32912f34-3b6b-4424-9551-d1f31620e02a
 spec:
   rules:
   - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: prod-stedi-tristin-nodeport # This needs to match line 53
-            port:
-              number: 80
----
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
