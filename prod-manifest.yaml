@@ -48,7 +48,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 1850
+              port: 4567
             initialDelaySeconds: 3
             periodSeconds: 3
 ---
@@ -62,7 +62,7 @@ spec:
   type: NodePort
   ports:
     - port: 8080
-      targetPort: 1850
+      targetPort: 45670
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -82,7 +82,7 @@ spec:
           service:
             name: prod-stedi-tristin-nodeport # This needs to match line 53
             port:
-              number: 8080
+              number: 80
 ---
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
